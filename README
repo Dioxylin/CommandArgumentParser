@@ -1,0 +1,69 @@
+Command Argument Parser
+
+A no-nonsense command argument parser for C#.
+
+-----
+
+Goals: A simple command line argument parser that can be used for consistent
+behavior for command line applications.
+
+Note: If you don't allow unsafe code in your project, you will not be able to
+use this library.  This is unfortunate, but a lot of convenience was added to
+be able to have pointers to top-level bools for parsing.
+
+You can add short options (like '-o'), long options (like '--option').  They
+can be either a bool, or they can take the next argument in the argument array
+as the value (e.g. '--value foo').
+
+TODO: Be able to mash a bunch of arguments together, like '-abcd'.  This
+library is literally unusable until that happens.
+
+-----
+
+Example:
+
+   static int Main(string[] args) {
+       bool aOption = false;
+       bool bOption = true;
+       StringBuilder cValue = new StringBuilder();
+       var parser = new ArgumentParser();
+       // We need to be able to reference our booleans, so we need unsafe.
+       unsafe {
+           parser.AddOnOption('a', "a-option", &aOption);
+           parser.AddOffOption('b', "b-option", &bOption);
+           parser.AddValueOption('c', "c-option", cValue);
+           parser.Parse(args);
+       }
+
+       if (parser.errors.count > 0) {
+           console.writeline("error: " + parser.errors[0]);
+           return 1;
+       }
+
+       if (aoption) {
+           console.writeline("a enabled.");
+       }
+
+       if (boption) {
+           console.writeline("b enabled.");
+       }
+
+       if (cvalue.tostring() != "") {
+           console.writeline("c: " + cvalue.tostring());
+       }
+
+       console.write("arguments:");
+       for (int i = 0; i < parser.arguments.count; ++i) {
+           console.write(" " + parser.arguments[i]);
+       }
+       console.writeline();
+
+       return 0;
+   }
+
+> .\test -a -b -c foo -c bar -- -c baz
+A enabled.
+C: bar
+Arguments: -c baz
+
+-----
