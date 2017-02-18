@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParserConcept", "CommandLineParserConcept.csproj", "{F1CCC94D-D77E-4EFD-8453-5A7D397DB3E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandArgumentParser", "CommandArgumentParser.csproj", "{F1CCC94D-D77E-4EFD-8453-5A7D397DB3E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandArgumentParser.Test", "..\CommandArgumentParserTest\CommandArgumentParser.Test.csproj", "{916CCCA2-AFF6-4698-92E1-BDD34ED3A34C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F1CCC94D-D77E-4EFD-8453-5A7D397DB3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CCC94D-D77E-4EFD-8453-5A7D397DB3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CCC94D-D77E-4EFD-8453-5A7D397DB3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{916CCCA2-AFF6-4698-92E1-BDD34ED3A34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{916CCCA2-AFF6-4698-92E1-BDD34ED3A34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{916CCCA2-AFF6-4698-92E1-BDD34ED3A34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{916CCCA2-AFF6-4698-92E1-BDD34ED3A34C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
