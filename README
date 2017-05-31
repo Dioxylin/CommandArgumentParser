@@ -5,18 +5,29 @@ A no-nonsense command argument parser for C#.
 -----
 
 Goals: A simple command line argument parser that can be used for consistent
-behavior for command line applications.
+behavior for command line applications.  The library shall not throw exceptions
+and rely on the caller to validate the options it changes (as well as checking
+for errors if they happen to arise manually).
 
-Note: If you don't allow unsafe code in your project, you will not be able to
-use this library.  This is unfortunate, but a lot of convenience was added to
-be able to have pointers to top-level bools for parsing.
+All you really need to do is make an instance of the parser and use the
+included BoolRef class to make what is essentially a reference to a boolean.  I
+chose to require explicit casts from bool to BoolRef since you could otherwise
+stick a normal bool into the Add* methods and not know why it wasn't changing
+your options.
 
 You can add short options (like '-o'), long options (like '--option').  They
 can be either a bool, or they can take the next argument in the argument array
 as the value (e.g. '--value foo').
 
-TODO: Be able to mash a bunch of arguments together, like '-abcd'.  This
-library is literally unusable until that happens.
+-----
+
+Short options group with a value argument will probably not give you what you
+want.  For example, -avb, where -v is a short option argument, will give you -a
+-v -b, so "-b" will be the argument to -v.
+
+Concept with value options would be that two such in the same group will just
+add an error and then just grab the argument for the latter.  Otherwise the
+next non-option argument will get the value.
 
 -----
 
